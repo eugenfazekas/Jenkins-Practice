@@ -6,6 +6,11 @@ pipeline {
             steps {
               bat  'docker-compose up' 
             }
+			post {
+                always {
+                    bat  'docker-compose down --remove-orphans'            
+                }
+            }
         }
     }
 }
