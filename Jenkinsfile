@@ -2,14 +2,14 @@ pipeline {
     agent any
 
     stages {
-        stage('Test') {
+        stage('docker-compose up') {
             steps {
               bat  'docker-compose up' 
             }
-			post {
-                always {
-                    bat  'docker-compose down --remove-orphans'            
-                }
+        }
+		stage('docker-compose down') {
+            steps {
+              bat  'docker-compose down --remove-orphans' 
             }
         }
     }
